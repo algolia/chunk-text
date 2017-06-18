@@ -1,0 +1,24 @@
+{
+  "name": "chunk-text",
+  "version": "0.1.0",
+  "description": "chunk/split a string by length without breaking words",
+  "main": "index.js",
+  "repository": "https://github.com/algolia/chunk-text",
+  "author": "Raymond RUTJES <raymond.rutjes@algolia.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.0.0",
+    "eslint-config-algolia": "^11.0.0",
+    "eslint-config-prettier": "^2.2.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-prettier": "^2.1.2",
+    "prettier": "^1.4.4"
+  }
+}
