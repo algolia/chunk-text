@@ -12,7 +12,7 @@ export default function(text, size) {
   }
 
   const exploded = [];
-  while (true) {
+  while (true) { // eslint-disable-line
     if (text.length <= size) {
       exploded.push(text);
       break;
@@ -21,10 +21,10 @@ export default function(text, size) {
     if (splitAt === -1) {
       // No whitespace found, we need to truncate the word in that case.
       exploded.push(text.substr(0, size));
-      text = text.substr(size);
+      text = text.substr(size); // eslint-disable-line no-param-reassign
     } else {
       exploded.push(text.substr(0, splitAt));
-      text = text.substr(splitAt + 1);
+      text = text.substr(splitAt + 1); // eslint-disable-line no-param-reassign
     }
   }
 
