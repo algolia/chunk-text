@@ -7,9 +7,9 @@
   "author": "Raymond RUTJES <raymond.rutjes@algolia.com>",
   "license": "MIT",
   "scripts": {
-    "test": "npm run lint",
+    "test": "yarn run lint",
     "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "yarn run lint -- --fix"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
