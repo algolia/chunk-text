@@ -15,7 +15,8 @@
     "lint": "eslint .",
     "lint:fix": "yarn run lint -- --fix",
     "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file",
-    "changelog:unreleased": "conventional-changelog --preset angular --output-unreleased"
+    "changelog:unreleased": "conventional-changelog --preset angular --output-unreleased",
+    "release": "bin/release.sh"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
