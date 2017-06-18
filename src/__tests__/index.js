@@ -25,7 +25,7 @@ it('should throw an error if no size is provided or invalid type.', () => {
   );
 });
 
-it('should return an array strings.', () => {
+it('should return an array of strings.', () => {
   const pieces = chunk('hello world', 5);
   expect(pieces).toEqual(['hello', 'world']);
 });
