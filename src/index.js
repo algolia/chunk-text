@@ -1,15 +1,22 @@
-export default function(text, chunkSize) {
+const assertIsValidText = function(text) {
   if (typeof text !== 'string') {
     throw new TypeError(
       'Text should be provided as first argument and be a string.'
     );
   }
+};
 
+const assertIsValidChunkSize = function(chunkSize) {
   if (typeof chunkSize !== 'number' || chunkSize <= 0) {
     throw new TypeError(
       'Size should be provided as 2nd argument and be a number greater than zero.'
     );
   }
+};
+
+export default function(text, chunkSize) {
+  assertIsValidText(text);
+  assertIsValidChunkSize(chunkSize);
 
   const exploded = [];
   while (true) { // eslint-disable-line
