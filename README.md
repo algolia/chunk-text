@@ -34,7 +34,7 @@ var out = chunk('hello world how are you?', 7);
 ```
 
 If no space is detected before `chunkSize` is reached, then it will truncate the word to always
-ensure the resulting text chunks have at the maximum a length of `chunkSize`.
+ensure the resulting text chunks have at maximum a length of `chunkSize`.
 
 ``` javascript
 var out = chunk('hello world', 4);
