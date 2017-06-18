@@ -19,11 +19,7 @@ export default function(text, chunkSize) {
   assertIsValidChunkSize(chunkSize);
 
   const chunks = [];
-  while (true) { // eslint-disable-line
-    if (text.length <= chunkSize) {
-      chunks.push(text);
-      break;
-    }
+  while (text.length > chunkSize) {
     const splitAt = text.lastIndexOf(' ', chunkSize);
     if (splitAt === -1) {
       // No whitespace found, we need to truncate the word in that case.
@@ -34,6 +30,8 @@ export default function(text, chunkSize) {
       text = text.substr(splitAt + 1); // eslint-disable-line no-param-reassign
     }
   }
+
+  chunks.push(text);
 
   return chunks;
 }
