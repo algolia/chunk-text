@@ -12,7 +12,7 @@
   "scripts": {
     "test": "yarn run lint && jest",
     "build": "babel src --out-dir dist --ignore __tests__",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "lint:fix": "yarn run lint -- --fix",
     "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file",
     "changelog:unreleased": "conventional-changelog --preset angular --output-unreleased",
