@@ -1,8 +1,8 @@
 {
   "name": "chunk-text",
   "version": "0.1.0",
-  "description": "chunk/split a string by length without breaking words",
-  "main": "index.js",
+  "description": "🔪 chunk/split a string by length without cutting/truncating words.",
+  "main": "dist/index.js",
   "repository": "https://github.com/algolia/chunk-text",
   "author": "Raymond RUTJES <raymond.rutjes@algolia.com>",
   "license": "MIT",
