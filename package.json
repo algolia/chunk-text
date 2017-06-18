@@ -6,8 +6,12 @@
   "repository": "https://github.com/algolia/chunk-text",
   "author": "Raymond RUTJES <raymond.rutjes@algolia.com>",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "yarn run lint && jest",
+    "build": "babel src -d dist",
     "lint": "eslint .",
     "lint:fix": "yarn run lint -- --fix"
   },
