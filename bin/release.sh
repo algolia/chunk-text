@@ -35,18 +35,19 @@ if ! yarn run changelog; then
   exit 1
 fi
 
+readonly PACKAGE_VERSION=$(< package.json grep version \
+  | head -1 \
+  | awk -F: '{ print $2 }' \
+  | sed 's/[",]//g' \
+  | tr -d '[:space:]')
+
+
 # Gives user a chance to review and eventually abort.
 git add --patch
 
 git commit --message="chore(release): v${PACKAGE_VERSION}"
 
 git push origin HEAD
-
-readonly PACKAGE_VERSION=$(< package.json grep version \
-  | head -1 \
-  | awk -F: '{ print $2 }' \
-  | sed 's/[",]//g' \
-  | tr -d '[:space:]')
 
 npm publish
 
