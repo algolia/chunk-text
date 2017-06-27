@@ -30,5 +30,8 @@
     "eslint-plugin-prettier": "^2.1.2",
     "jest": "^20.0.4",
     "prettier": "^1.4.4"
+  },
+  "dependencies": {
+    "runes": "^0.4.1"
   }
 }

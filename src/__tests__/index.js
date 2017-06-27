@@ -39,3 +39,26 @@ it('should truncate a word if longer than size', () => {
   const pieces = chunk('hello you', 4);
   expect(pieces).toEqual(['hell', 'o', 'you']);
 });
+
+it('should count double width characters as single characters', () => {
+  // each of these characters is two bytes
+  const chineseText = '𤻪𬜬𬜯';
+  const camembert = '🧀🧀🧀🧀 🧀🧀🧀🧀';
+
+  expect(chunk(chineseText, 2)).toEqual(['𤻪𬜬', '𬜯']);
+  expect(chunk(chineseText, 1)).toEqual(['𤻪', '𬜬', '𬜯']);
+  expect(chunk(camembert, 4)).toEqual(['🧀🧀🧀🧀', '🧀🧀🧀🧀']);
+});
+
+// this test does not pass yet
+it('should not cut combined characters', () => {
+  // one woman runner emoji with a colour is seven bytes, or five characters
+  // RUNNER(2) + COLOUR(2) + ZJW + GENDER + VS15
+  const runners = '🏃🏽‍♀️🏃🏽‍♀️🏃🏽‍♀️';
+  // FLAG + RAINBOW
+  const flags = '🏳️‍🌈🏳️‍🌈';
+
+  expect(chunk(runners, 3)).toEqual(['🏃🏽‍♀️🏃🏽‍♀️🏃🏽‍♀️']);
+  expect(chunk(runners, 1)).toEqual(['🏃🏽‍♀️', '🏃🏽‍♀️', '🏃🏽‍♀️']);
+  expect(chunk(flags, 1)).toEqual(['🏳️‍🌈', '🏳️‍🌈']);
+});

@@ -1,3 +1,6 @@
+/* eslint-disable import/no-commonjs */
+const runes = require('runes');
+
 const assertIsValidText = function(text) {
   if (typeof text !== 'string') {
     throw new TypeError(
@@ -19,19 +22,24 @@ export default function(text, chunkSize) {
   assertIsValidChunkSize(chunkSize);
 
   const chunks = [];
-  while (text.length > chunkSize) {
-    const splitAt = text.lastIndexOf(' ', chunkSize);
+  let characters = runes(text);
+
+  while (characters.length > chunkSize) {
+    const splitAt = characters.lastIndexOf(' ', chunkSize);
+
     if (splitAt === -1) {
       // No whitespace found, we need to truncate the word in that case.
-      chunks.push(text.substr(0, chunkSize));
-      text = text.substr(chunkSize); // eslint-disable-line no-param-reassign
+      const chunk = characters.slice(0, chunkSize).join('');
+      chunks.push(chunk);
+      characters = characters.slice(chunkSize); // eslint-disable-line no-param-reassign
     } else {
-      chunks.push(text.substr(0, splitAt));
-      text = text.substr(splitAt + 1); // eslint-disable-line no-param-reassign
+      const chunk = characters.slice(0, splitAt).join('');
+      chunks.push(chunk);
+      characters = characters.slice(splitAt + 1); // eslint-disable-line no-param-reassign
     }
   }
 
-  chunks.push(text);
+  chunks.push(characters.join(''));
 
   return chunks;
 }
