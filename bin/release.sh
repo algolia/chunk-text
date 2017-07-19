@@ -35,6 +35,9 @@ if ! yarn run changelog; then
   exit 1
 fi
 
+yarn
+yarn build
+
 readonly PACKAGE_VERSION=$(< package.json grep version \
   | head -1 \
   | awk -F: '{ print $2 }' \
@@ -52,7 +55,6 @@ git push origin HEAD
 npm publish
 
 git tag "v$PACKAGE_VERSION"
-
 git push --tags
 
 echo "Pushed package to npm, and also pushed 'v$PACKAGE_VERSION' tag to git repository."
