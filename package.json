@@ -1,6 +1,6 @@
 {
   "name": "chunk-text",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "🔪 chunk/split a string by length without cutting/truncating words.",
   "main": "dist/index.js",
   "repository": "https://github.com/algolia/chunk-text",
@@ -28,6 +28,7 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jest": "^20.0.3",
     "eslint-plugin-prettier": "^2.1.2",
+    "fastestsmallesttextencoderdecoder-encodeinto": "^1.0.22",
     "jest": "^20.0.4",
     "prettier": "^1.4.4"
   },
