@@ -1,3 +1,10 @@
+<a name="2.0.0"></a>
+## [2.0.0](https://github.com/algolia/chunk-text/compare/v1.0.5...v2.0.0) (2020-09-14)
+
+### Features
+
+* enhanced multi-byte character support using `TextEncoder` (#8) ([dab7672](https://github.com/algolia/chunk-text/commit/dab7672))
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/algolia/chunk-text/compare/v1.0.4...v1.0.5) (2017-07-19)
 
