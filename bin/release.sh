@@ -1,5 +1,4 @@
 #!/bin/sh
-
 set -eu
 
 readonly CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
@@ -43,7 +42,6 @@ readonly PACKAGE_VERSION=$(< package.json grep version \
   | awk -F: '{ print $2 }' \
   | sed 's/[",]//g' \
   | tr -d '[:space:]')
-
 
 # Gives user a chance to review and eventually abort.
 git add --patch

@@ -1,7 +1,6 @@
-/* eslint-disable import/no-commonjs */
-const runes = require('runes');
+import runes from 'runes';
 
-const assertIsValidText = function(text) {
+const assertIsValidText = (text) => {
   if (typeof text !== 'string') {
     throw new TypeError(
       'Text should be provided as first argument and be a string.'
@@ -9,7 +8,7 @@ const assertIsValidText = function(text) {
   }
 };
 
-const assertIsValidChunkSize = function(chunkSize) {
+const assertIsValidChunkSize = (chunkSize) => {
   if (Number.isNaN(chunkSize) || Number.parseInt(chunkSize, 10) <= 0) {
     throw new TypeError(
       'Size should be provided as 2nd argument and parseInt to a value greater than zero.'
@@ -17,7 +16,7 @@ const assertIsValidChunkSize = function(chunkSize) {
   }
 };
 
-const assertIsValidChunkOptions = function(chunkOptions) {
+const assertIsValidChunkOptions = (chunkOptions) => {
   if (
     typeof chunkOptions !== 'object' &&
     typeof chunkOptions !== 'undefined' &&
@@ -31,11 +30,11 @@ const assertIsValidChunkOptions = function(chunkOptions) {
   }
 };
 
-const assertIsValidCharLengthMask = function(
+const assertIsValidCharLengthMask = (
   charLengthMask,
   charLengthMaskIntParseIntNaN,
   charLengthMaskInt
-) {
+) => {
   if (charLengthMaskIntParseIntNaN || charLengthMaskInt < -1) {
     throw new TypeError(
       'charLengthMask should be provided as a chunkOptions property and parseInt to a value >= -1.'
@@ -43,7 +42,7 @@ const assertIsValidCharLengthMask = function(
   }
 };
 
-const assertIsValidTextEncoder = function(textEncoder) {
+const assertIsValidTextEncoder = (textEncoder) => {
   if (
     typeof textEncoder === 'string' ||
     Array.isArray(textEncoder) ||
@@ -56,7 +55,7 @@ const assertIsValidTextEncoder = function(textEncoder) {
   }
 };
 
-const assertIsValidCharLengthType = function(charLengthType) {
+const assertIsValidCharLengthType = (charLengthType) => {
   if (
     typeof charLengthType !== 'string' ||
     !(charLengthType === 'length' || charLengthType === 'TextEncoder')
@@ -67,12 +66,12 @@ const assertIsValidCharLengthType = function(charLengthType) {
   }
 };
 
-const chunkLength = function(
+const chunkLength = (
   characters,
   charLengthMask,
   charLengthType,
   textEncoder
-) {
+) => {
   let length;
   if (
     typeof characters === 'undefined' ||
@@ -97,19 +96,21 @@ const chunkLength = function(
     } else if (charLengthMask === 0) {
       length = charactersArray
         .map(
-          character =>
+          (character) =>
             (charLengthType === 'TextEncoder'
               ? textEncoder.encode(character)
-              : character).length
+              : character
+            ).length
         )
         .reduce((accumulator, currentValue) => accumulator + currentValue);
     } else if (charLengthMask > 0) {
       const arrayLength = charactersArray
         .map(
-          character =>
+          (character) =>
             (charLengthType === 'TextEncoder'
               ? textEncoder.encode(character)
-              : character).length
+              : character
+            ).length
         )
         .reduce(
           (accumulator, currentValue) =>
@@ -124,6 +125,7 @@ const chunkLength = function(
   }
   return length;
 };
+
 const lastSpaceOrLength = (text, upTo) => {
   let lastIndex = text.lastIndexOf(' ', upTo);
   if (lastIndex === -1) {
@@ -135,13 +137,13 @@ const lastSpaceOrLength = (text, upTo) => {
   return lastIndex;
 };
 
-const chunkIndexOf = function(
+const chunkIndexOf = (
   characters,
   chunkSize,
   charLengthMask,
   charLengthType,
   textEncoder
-) {
+) => {
   let splitAt = lastSpaceOrLength(characters, chunkSize);
 
   while (
@@ -170,7 +172,7 @@ const chunkIndexOf = function(
   return splitAt;
 };
 
-export default function(text, chunkSize, chunkOptions) {
+export default (text, chunkSize, chunkOptions) => {
   assertIsValidText(text);
   const chunkSizeInt = Number.parseInt(chunkSize, 10);
   assertIsValidChunkSize(chunkSizeInt);
@@ -204,10 +206,10 @@ export default function(text, chunkSize, chunkOptions) {
   const charLengthMask = charLengthMaskIntParseIntNaN
     ? -1
     : charLengthMaskIntParseInt;
-  const charLengthType = typeof chunkOptions === 'object' &&
-    chunkOptions.charLengthType
-    ? chunkOptions.charLengthType
-    : 'length';
+  const charLengthType =
+    typeof chunkOptions === 'object' && chunkOptions.charLengthType
+      ? chunkOptions.charLengthType
+      : 'length';
   try {
     if (
       charLengthType === 'TextEncoder' &&
@@ -242,4 +244,4 @@ export default function(text, chunkSize, chunkOptions) {
     characters = characters.slice(splitAt);
   }
   return chunks;
-}
+};

@@ -257,10 +257,9 @@ it('should count all characters as single characters using charLengthMask -1 or 
   // The Woman Running emoji is a ZWJ sequence combining 🏃 Person Running, ‍ Zero Width Joiner and ♀ Female Sign.
   // each of these characters is five bytes
   const womanRunningZWJ = '🏃‍♀️';
-  const womenRunningZWJ = `${womanRunningZWJ +
-    womanRunningZWJ +
-    womanRunningZWJ +
-    womanRunningZWJ} ${womanRunningZWJ + womanRunningZWJ}`;
+  const womenRunningZWJ = `${
+    womanRunningZWJ + womanRunningZWJ + womanRunningZWJ + womanRunningZWJ
+  } ${womanRunningZWJ + womanRunningZWJ}`;
   expect(chunk(womenRunningZWJ, 2, { charLengthMask: -1 })).toEqual([
     womanRunningZWJ + womanRunningZWJ,
     womanRunningZWJ + womanRunningZWJ,
@@ -310,10 +309,9 @@ it('should count characters as bytes using charLengthMask value 0', () => {
   // The Woman Running emoji is a ZWJ sequence combining 🏃 Person Running, ‍ Zero Width Joiner and ♀ Female Sign.
   // each of these characters is five bytes
   const womanRunningZWJ = '🏃‍♀️';
-  const womenRunningZWJ = `${womanRunningZWJ +
-    womanRunningZWJ +
-    womanRunningZWJ +
-    womanRunningZWJ} ${womanRunningZWJ + womanRunningZWJ}`;
+  const womenRunningZWJ = `${
+    womanRunningZWJ + womanRunningZWJ + womanRunningZWJ + womanRunningZWJ
+  } ${womanRunningZWJ + womanRunningZWJ}`;
   expect(chunk(womenRunningZWJ, 10, { charLengthMask: 0 })).toEqual([
     womanRunningZWJ + womanRunningZWJ,
     womanRunningZWJ + womanRunningZWJ,
@@ -408,10 +406,9 @@ it('should count characters as bytes up to maximum N charLengthMask value > 0', 
   // The Woman Running emoji is a ZWJ sequence combining 🏃 Person Running, ‍ Zero Width Joiner and ♀ Female Sign.
   // each of these characters is five bytes
   const womanRunningZWJ = '🏃‍♀️';
-  const womenRunningZWJ = `${womanRunningZWJ +
-    womanRunningZWJ +
-    womanRunningZWJ +
-    womanRunningZWJ} ${womanRunningZWJ + womanRunningZWJ}`;
+  const womenRunningZWJ = `${
+    womanRunningZWJ + womanRunningZWJ + womanRunningZWJ + womanRunningZWJ
+  } ${womanRunningZWJ + womanRunningZWJ}`;
   expect(chunk(womenRunningZWJ, 2, { charLengthMask: 0 })).toEqual([
     womanRunningZWJ,
     womanRunningZWJ,
@@ -501,10 +498,9 @@ it('should count N-byte characters with charLengthMask value 0 the same as charL
   // The Woman Running emoji is a ZWJ sequence combining 🏃 Person Running, ‍ Zero Width Joiner and ♀ Female Sign.
   // each of these characters is five bytes
   const womanRunningZWJ = '🏃‍♀️';
-  const womenRunningZWJ = `${womanRunningZWJ +
-    womanRunningZWJ +
-    womanRunningZWJ +
-    womanRunningZWJ} ${womanRunningZWJ + womanRunningZWJ}`;
+  const womenRunningZWJ = `${
+    womanRunningZWJ + womanRunningZWJ + womanRunningZWJ + womanRunningZWJ
+  } ${womanRunningZWJ + womanRunningZWJ}`;
   expect(chunk(womenRunningZWJ, 2, { charLengthMask: 0 })).toEqual(
     chunk(womenRunningZWJ, 2, { charLengthMask: 5 })
   );
@@ -537,10 +533,9 @@ it('should count default charLengthMask the same as charLengthMask value -1', ()
   // The Woman Running emoji is a ZWJ sequence combining 🏃 Person Running, ‍ Zero Width Joiner and ♀ Female Sign.
   // each of these characters is five bytes
   const womanRunningZWJ = '🏃‍♀️';
-  const womenRunningZWJ = `${womanRunningZWJ +
-    womanRunningZWJ +
-    womanRunningZWJ +
-    womanRunningZWJ} ${womanRunningZWJ + womanRunningZWJ}`;
+  const womenRunningZWJ = `${
+    womanRunningZWJ + womanRunningZWJ + womanRunningZWJ + womanRunningZWJ
+  } ${womanRunningZWJ + womanRunningZWJ}`;
   expect(chunk(womenRunningZWJ, 2)).toEqual(
     chunk(womenRunningZWJ, 2, { charLengthMask: -1 })
   );
