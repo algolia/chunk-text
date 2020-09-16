@@ -1,6 +1,6 @@
 {
   "name": "chunk-text",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "🔪 chunk/split a string by length without cutting/truncating words.",
   "type": "commonJs",
   "module": "./dist/index.js",
@@ -30,7 +30,8 @@
     "changelog:unreleased": "conventional-changelog --preset angular --output-unreleased",
     "start": "node --unhandled-rejections=strict --trace-warnings ./bin/server.js",
     "chunk": "npm run-script start",
-    "chunk-text": "npm run-script start"
+    "chunk-text": "npm run-script start",
+    "prepublishOnly": "npm run-script build"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

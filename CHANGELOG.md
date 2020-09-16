@@ -1,5 +1,5 @@
-<a name="2.0.0"></a>
-## [2.0.0](https://github.com/algolia/chunk-text/compare/v1.0.5...v2.0.0) (2020-09-14)
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/algolia/chunk-text/compare/v1.0.5...v2.0.1) (2020-09-14)
 
 ### Features
 
